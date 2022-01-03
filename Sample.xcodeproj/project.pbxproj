@@ -19,6 +19,8 @@
 		20A22AF12782B8B900F5B622 /* MainTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AF02782B8B900F5B622 /* MainTableCell.swift */; };
 		20A22AF42782B8EB00F5B622 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AF32782B8EB00F5B622 /* NibLoadable.swift */; };
 		20A22AF72782B91D00F5B622 /* GithubRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AF62782B91D00F5B622 /* GithubRepo.swift */; };
+		20A22AF92782B9EA00F5B622 /* UITableView+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AF82782B9EA00F5B622 /* UITableView+Addition.swift */; };
+		20A22AFB2782B9FB00F5B622 /* UITableViewCell+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AFA2782B9FB00F5B622 /* UITableViewCell+Addition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		20A22AF02782B8B900F5B622 /* MainTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableCell.swift; sourceTree = "<group>"; };
 		20A22AF32782B8EB00F5B622 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		20A22AF62782B91D00F5B622 /* GithubRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepo.swift; sourceTree = "<group>"; };
+		20A22AF82782B9EA00F5B622 /* UITableView+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Addition.swift"; sourceTree = "<group>"; };
+		20A22AFA2782B9FB00F5B622 /* UITableViewCell+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Addition.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,8 @@
 		20A22AF22782B8DE00F5B622 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				20A22AF82782B9EA00F5B622 /* UITableView+Addition.swift */,
+				20A22AFA2782B9FB00F5B622 /* UITableViewCell+Addition.swift */,
 				20A22AF32782B8EB00F5B622 /* NibLoadable.swift */,
 			);
 			path = Extension;
@@ -266,7 +272,9 @@
 				20A22ACB2782851000F5B622 /* MainViewController.swift in Sources */,
 				20A22AC72782851000F5B622 /* AppDelegate.swift in Sources */,
 				20A22AF42782B8EB00F5B622 /* NibLoadable.swift in Sources */,
+				20A22AFB2782B9FB00F5B622 /* UITableViewCell+Addition.swift in Sources */,
 				20A22AC92782851000F5B622 /* SceneDelegate.swift in Sources */,
+				20A22AF92782B9EA00F5B622 /* UITableView+Addition.swift in Sources */,
 				20A22AED2782B57200F5B622 /* MainViewModel.swift in Sources */,
 				20A22AF72782B91D00F5B622 /* GithubRepo.swift in Sources */,
 			);

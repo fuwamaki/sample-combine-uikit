@@ -13,7 +13,6 @@
 		20A22ACE2782851000F5B622 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A22ACC2782851000F5B622 /* Main.storyboard */; };
 		20A22AD02782851000F5B622 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20A22ACF2782851000F5B622 /* Assets.xcassets */; };
 		20A22AD32782851000F5B622 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A22AD12782851000F5B622 /* LaunchScreen.storyboard */; };
-		20A22AE12782854400F5B622 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AE02782854400F5B622 /* SampleTests.swift */; };
 		20A22AED2782B57200F5B622 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AEC2782B57200F5B622 /* MainViewModel.swift */; };
 		20A22AEF2782B7F200F5B622 /* MainTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20A22AEE2782B7F200F5B622 /* MainTableCell.xib */; };
 		20A22AF12782B8B900F5B622 /* MainTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AF02782B8B900F5B622 /* MainTableCell.swift */; };
@@ -25,6 +24,7 @@
 		20A22B002782C04300F5B622 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AFF2782C04300F5B622 /* APIError.swift */; };
 		20A22B022782C06100F5B622 /* APIUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22B012782C06100F5B622 /* APIUrl.swift */; };
 		20A22B042782CE5700F5B622 /* MainViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22B032782CE5700F5B622 /* MainViewModelTest.swift */; };
+		20A22B062782D5E000F5B622 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22B052782D5E000F5B622 /* MockAPIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,6 @@
 		20A22AD22782851000F5B622 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20A22AD42782851000F5B622 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20A22ADE2782854400F5B622 /* SampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		20A22AE02782854400F5B622 /* SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTests.swift; sourceTree = "<group>"; };
 		20A22AEC2782B57200F5B622 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		20A22AEE2782B7F200F5B622 /* MainTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableCell.xib; sourceTree = "<group>"; };
 		20A22AF02782B8B900F5B622 /* MainTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableCell.swift; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		20A22AFF2782C04300F5B622 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		20A22B012782C06100F5B622 /* APIUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUrl.swift; sourceTree = "<group>"; };
 		20A22B032782CE5700F5B622 /* MainViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTest.swift; sourceTree = "<group>"; };
+		20A22B052782D5E000F5B622 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 		20A22ADF2782854400F5B622 /* SampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				20A22AE02782854400F5B622 /* SampleTests.swift */,
+				20A22B052782D5E000F5B622 /* MockAPIClient.swift */,
 				20A22B032782CE5700F5B622 /* MainViewModelTest.swift */,
 			);
 			path = SampleTests;
@@ -307,8 +307,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20A22AE12782854400F5B622 /* SampleTests.swift in Sources */,
 				20A22B042782CE5700F5B622 /* MainViewModelTest.swift in Sources */,
+				20A22B062782D5E000F5B622 /* MockAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
         didSet {
             tableView.registerForCell(MainTableCell.self)
             tableView.delegate = self
-            cancellable = viewModel.$list
+            cancellable = viewModel.listSubject
                 .sink(receiveValue: tableView.items { tableView, indexPath, item in
                     let cell = tableView.dequeueCellForIndexPath(indexPath) as MainTableCell
                     cell.render(repo: item)
@@ -39,8 +39,7 @@ class MainViewController: UIViewController {
     @Published var people = [Person(name: "Kim"), Person(name: "Charles")]
     var cancellable: AnyCancellable?
 
-//    private let viewModel: MainViewModelable = MainViewModel()
-    private let viewModel = MainViewModel()
+    private let viewModel: MainViewModelable = MainViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

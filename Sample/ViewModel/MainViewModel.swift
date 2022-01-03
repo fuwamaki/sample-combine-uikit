@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import Combine
 
 protocol MainViewModelable {
+    var listSubject: PassthroughSubject<[GithubRepo], Never> { get }
     func fetch(query: String?)
 }
 
 final class MainViewModel {
 
-    @Published var list: [GithubRepo] = []
+    var listSubject = PassthroughSubject<[GithubRepo], Never>()
 
     private let apiClient: APIClientable
 
@@ -26,7 +28,7 @@ final class MainViewModel {
     }
 
     @MainActor private func setupList(_ list: [GithubRepo]) {
-        self.list = list
+        self.listSubject.send(list)
     }
 }
 

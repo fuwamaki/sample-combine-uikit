@@ -52,4 +52,5 @@ class MainTableCell: UITableViewCell {
     }
 }
 
+// MARK: NibLoadable
 extension MainTableCell: NibLoadable {}

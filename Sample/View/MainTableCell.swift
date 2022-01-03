@@ -13,22 +13,19 @@ class MainTableCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subTitleLabel: UILabel!
 
-//    private let gateway: APIGatewayProtocol = APIGateway()
+    private let apiClient: APIClientable = APIClient()
 
     var iconImageUrl: String? {
         didSet {
             guard let urlString = iconImageUrl,
                   let url = URL(string: urlString) else { return }
-//            gateway.fetchImage(url: url) { [weak self] result in
-//                switch result {
-//                case .success(let image):
-//                    DispatchQueue.main.async {
-//                        self?.iconImageView.image = image
-//                    }
-//                case .failure(let error):
-//                    debugPrint(error.localizedDescription)
-//                }
-//            }
+            Task {
+                let data = try await apiClient.fetchImageData(url: url)
+                let image = UIImage(data: data)
+                DispatchQueue.main.async {
+                    self.iconImageView.image = image
+                }
+            }
         }
     }
 

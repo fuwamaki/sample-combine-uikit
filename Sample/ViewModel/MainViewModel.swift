@@ -7,4 +7,20 @@
 
 import Foundation
 
-final class MainViewModel {}
+protocol MainViewModelable {}
+
+final class MainViewModel {
+
+    private let apiClient: APIClientable
+
+    convenience init() {
+        self.init(apiClient: APIClient())
+    }
+
+    init(apiClient: APIClientable) {
+        self.apiClient = apiClient
+    }
+}
+
+// MARK: MainViewModelable
+extension MainViewModel: MainViewModelable {}

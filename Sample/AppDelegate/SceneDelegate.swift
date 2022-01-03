@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Network
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private let monitor = NWPathMonitor()
 
     func scene(
         _ scene: UIScene,
@@ -21,7 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidDisconnect(_ scene: UIScene) {}
 
-    func sceneDidBecomeActive(_ scene: UIScene) {}
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        monitor.pathUpdateHandler = { path in
+            APIClient.networkStatus = path.status
+        }
+    }
 
     func sceneWillResignActive(_ scene: UIScene) {}
 

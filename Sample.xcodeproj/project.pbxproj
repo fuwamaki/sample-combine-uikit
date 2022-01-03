@@ -21,6 +21,9 @@
 		20A22AF72782B91D00F5B622 /* GithubRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AF62782B91D00F5B622 /* GithubRepo.swift */; };
 		20A22AF92782B9EA00F5B622 /* UITableView+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AF82782B9EA00F5B622 /* UITableView+Addition.swift */; };
 		20A22AFB2782B9FB00F5B622 /* UITableViewCell+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AFA2782B9FB00F5B622 /* UITableViewCell+Addition.swift */; };
+		20A22AFE2782BE3900F5B622 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AFD2782BE3900F5B622 /* APIClient.swift */; };
+		20A22B002782C04300F5B622 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22AFF2782C04300F5B622 /* APIError.swift */; };
+		20A22B022782C06100F5B622 /* APIUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A22B012782C06100F5B622 /* APIUrl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		20A22AF62782B91D00F5B622 /* GithubRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepo.swift; sourceTree = "<group>"; };
 		20A22AF82782B9EA00F5B622 /* UITableView+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Addition.swift"; sourceTree = "<group>"; };
 		20A22AFA2782B9FB00F5B622 /* UITableViewCell+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Addition.swift"; sourceTree = "<group>"; };
+		20A22AFD2782BE3900F5B622 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		20A22AFF2782C04300F5B622 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		20A22B012782C06100F5B622 /* APIUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUrl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 				20A22AE72782B4BB00F5B622 /* View */,
 				20A22AE82782B4C000F5B622 /* ViewModel */,
 				20A22AF52782B91100F5B622 /* Entity */,
+				20A22AFC2782BE2300F5B622 /* Network */,
 				20A22AEA2782B4D100F5B622 /* Resource */,
 				20A22AF22782B8DE00F5B622 /* Extension */,
 				20A22AD42782851000F5B622 /* Info.plist */,
@@ -164,6 +171,16 @@
 				20A22AF62782B91D00F5B622 /* GithubRepo.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		20A22AFC2782BE2300F5B622 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				20A22AFD2782BE3900F5B622 /* APIClient.swift */,
+				20A22AFF2782C04300F5B622 /* APIError.swift */,
+				20A22B012782C06100F5B622 /* APIUrl.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,12 +288,15 @@
 				20A22AF12782B8B900F5B622 /* MainTableCell.swift in Sources */,
 				20A22ACB2782851000F5B622 /* MainViewController.swift in Sources */,
 				20A22AC72782851000F5B622 /* AppDelegate.swift in Sources */,
+				20A22AFE2782BE3900F5B622 /* APIClient.swift in Sources */,
 				20A22AF42782B8EB00F5B622 /* NibLoadable.swift in Sources */,
 				20A22AFB2782B9FB00F5B622 /* UITableViewCell+Addition.swift in Sources */,
 				20A22AC92782851000F5B622 /* SceneDelegate.swift in Sources */,
 				20A22AF92782B9EA00F5B622 /* UITableView+Addition.swift in Sources */,
+				20A22B022782C06100F5B622 /* APIUrl.swift in Sources */,
 				20A22AED2782B57200F5B622 /* MainViewModel.swift in Sources */,
 				20A22AF72782B91D00F5B622 /* GithubRepo.swift in Sources */,
+				20A22B002782C04300F5B622 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

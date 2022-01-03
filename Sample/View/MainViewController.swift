@@ -30,6 +30,8 @@ class MainViewController: UIViewController {
     @Published var people = [Person(name: "Kim"), Person(name: "Charles")]
     var cancellable: AnyCancellable?
 
+    private let viewModel: MainViewModelable = MainViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }

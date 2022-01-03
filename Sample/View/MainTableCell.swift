@@ -13,9 +13,7 @@ class MainTableCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subTitleLabel: UILabel!
 
-    private let apiClient: APIClientable = APIClient()
-
-    var iconImageUrl: String? {
+    private var iconImageUrl: String? {
         didSet {
             guard let urlString = iconImageUrl,
                   let url = URL(string: urlString) else { return }
@@ -29,17 +27,19 @@ class MainTableCell: UITableViewCell {
         }
     }
 
-    var title: String? {
+    private var title: String? {
         didSet {
             titleLabel.text = title
         }
     }
 
-    var subTitle: String? {
+    private var subTitle: String? {
         didSet {
             subTitleLabel.text = "☆ " + (subTitle ?? "")
         }
     }
+
+    private let apiClient: APIClientable = APIClient()
 
     override func awakeFromNib() {
         super.awakeFromNib()

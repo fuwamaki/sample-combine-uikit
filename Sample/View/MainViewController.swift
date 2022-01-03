@@ -8,10 +8,6 @@
 import UIKit
 import Combine
 
-struct Person {
-    let name: String
-}
-
 class MainViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView! {

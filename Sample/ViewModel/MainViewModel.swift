@@ -7,9 +7,13 @@
 
 import Foundation
 
-protocol MainViewModelable {}
+protocol MainViewModelable {
+    func fetch(query: String?)
+}
 
 final class MainViewModel {
+
+    @Published var list: [GithubRepo] = []
 
     private let apiClient: APIClientable
 
@@ -20,7 +24,19 @@ final class MainViewModel {
     init(apiClient: APIClientable) {
         self.apiClient = apiClient
     }
+
+    @MainActor private func setupList(_ list: [GithubRepo]) {
+        self.list = list
+    }
 }
 
 // MARK: MainViewModelable
-extension MainViewModel: MainViewModelable {}
+extension MainViewModel: MainViewModelable {
+    func fetch(query: String?) {
+        guard let query = query else { return }
+        Task {
+            let list = try await apiClient.fetchGithubRepo(query: query).items
+            await self.setupList(list)
+        }
+    }
+}

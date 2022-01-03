@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
         didSet {
             tableView.registerForCell(MainTableCell.self)
             tableView.delegate = self
+
             viewModel.listSubject
                 .sink(receiveValue: tableView.items { tableView, indexPath, item in
                     let cell = tableView.dequeueCellForIndexPath(indexPath) as MainTableCell
@@ -53,9 +54,20 @@ class MainViewController: UIViewController {
         view.addSubview(indicator)
 
         viewModel.isLoadingSubject
-            .sink {
-                $0 ? self.indicator.startAnimating() : self.indicator.stopAnimating()
-                self.indicator.isHidden = !$0
+            .sink { [weak self] in
+                $0 ? self?.indicator.startAnimating() : self?.indicator.stopAnimating()
+                self?.indicator.isHidden = !$0
+            }
+            .store(in: &subscriptions)
+
+        viewModel.errorAlertSubject
+            .sink { [weak self] message in
+                let alert = UIAlertController(
+                    title: "エラー",
+                    message: message,
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self?.present(alert, animated: true)
             }
             .store(in: &subscriptions)
     }
@@ -73,7 +85,7 @@ extension MainViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {}
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.fetch(query: searchBar.text)
+        Task { await viewModel.fetch(query: searchBar.text) }
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

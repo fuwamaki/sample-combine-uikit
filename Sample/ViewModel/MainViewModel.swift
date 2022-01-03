@@ -11,12 +11,14 @@ import Combine
 protocol MainViewModelable {
     var listSubject: PassthroughSubject<[GithubRepo], Never> { get }
     var isLoadingSubject: PassthroughSubject<Bool, Never> { get }
-    func fetch(query: String?)
+    var errorAlertSubject: PassthroughSubject<String, Never> { get }
+    func fetch(query: String?) async
 }
 
 final class MainViewModel {
     var listSubject = PassthroughSubject<[GithubRepo], Never>()
     var isLoadingSubject = PassthroughSubject<Bool, Never>()
+    var errorAlertSubject = PassthroughSubject<String, Never>()
 
     private let apiClient: APIClientable
 
@@ -35,17 +37,25 @@ final class MainViewModel {
     @MainActor private func setupList(_ list: [GithubRepo]) {
         self.listSubject.send(list)
     }
+
+    @MainActor private func showErrorAlert(_ message: String) {
+        self.errorAlertSubject.send(message)
+    }
 }
 
 // MARK: MainViewModelable
 extension MainViewModel: MainViewModelable {
-    func fetch(query: String?) {
-        guard let query = query else { return }
-        Task {
+    func fetch(query: String?) async {
+        do {
+            guard let query = query else { return }
             await self.setupLoading(true)
             let list = try await apiClient.fetchGithubRepo(query: query).items
             await self.setupList(list)
             await self.setupLoading(false)
+        } catch let error {
+            await self.setupLoading(false)
+            guard let error = error as? APIError else { return }
+            await self.showErrorAlert(error.message)
         }
     }
 }

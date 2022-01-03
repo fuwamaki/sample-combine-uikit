@@ -6,19 +6,28 @@
 //
 
 import XCTest
+@testable import Sample
 
 class MainViewModelTest: XCTestCase {
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testFetchWithSuccess() async throws {
+        let mockAPIClient: APIClientable = MockAPIClient(isSuccess: true)
+        let viewModel = MainViewModel(apiClient: mockAPIClient)
+        await viewModel.fetch(query: "test")
+        XCTAssertEqual(viewModel.listSubject.value.count, 1)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testFetchWithFailure() async throws {
+        let mockAPIClient: APIClientable = MockAPIClient(isSuccess: false)
+        let viewModel = MainViewModel(apiClient: mockAPIClient)
+        await viewModel.fetch(query: "test")
+        XCTAssertEqual(viewModel.listSubject.value.count, 0)
     }
 
+    func testHandleDidSelectRowAt() async throws {
+        let mockAPIClient: APIClientable = MockAPIClient(isSuccess: true)
+        let viewModel = MainViewModel(apiClient: mockAPIClient)
+        await viewModel.fetch(query: "test")
+        viewModel.handleDidSelectRowAt(IndexPath(row: 0, section: 0))
+    }
 }

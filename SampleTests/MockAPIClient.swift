@@ -29,7 +29,7 @@ class MockAPIClient: APIClientable {
         if isSuccess {
             return Data()
         } else {
-            throw NSError(domain: "api error", code: 400, userInfo: nil)
+            throw APIError.unknownError
         }
     }
 
@@ -37,7 +37,7 @@ class MockAPIClient: APIClientable {
         if isSuccess {
             return mockGithubRepoList
         } else {
-            throw NSError(domain: "api error", code: 400, userInfo: nil)
+            throw APIError.unknownError
         }
     }
 }

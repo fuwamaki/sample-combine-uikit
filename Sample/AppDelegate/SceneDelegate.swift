@@ -9,7 +9,6 @@ import UIKit
 import Network
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
     private let monitor = NWPathMonitor()
 

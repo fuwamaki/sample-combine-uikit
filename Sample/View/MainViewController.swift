@@ -10,7 +10,6 @@ import Combine
 import SafariServices
 
 class MainViewController: UIViewController {
-
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
             tableView.registerForCell(MainTableCell.self)

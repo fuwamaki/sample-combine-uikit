@@ -8,7 +8,6 @@
 import UIKit
 
 extension UITableViewCell {
-
     static var defaultHeight: CGFloat {
         return 48.0
     }

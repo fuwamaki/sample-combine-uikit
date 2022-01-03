@@ -8,7 +8,6 @@
 import UIKit
 
 extension UITableView {
-
     func registerForCell<T>(_: T.Type) where T: UITableViewCell, T: NibLoadable {
         register(T.loadNib(), forCellReuseIdentifier: T.defaultReuseIdentifier)
     }

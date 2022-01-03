@@ -26,6 +26,10 @@ struct GithubRepo: Codable {
         self.htmlUrl = htmlUrl
         self.owner = owner
     }
+
+    var stargazerText: String {
+        "☆ " + String(stargazersCount)
+    }
 }
 
 struct GithubRepoOwner: Codable {

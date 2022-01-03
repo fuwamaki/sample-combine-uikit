@@ -18,12 +18,13 @@ class MainViewController: UIViewController {
         didSet {
             tableView.registerForCell(MainTableCell.self)
             tableView.delegate = self
-            cancellable = viewModel.listSubject
+            viewModel.listSubject
                 .sink(receiveValue: tableView.items { tableView, indexPath, item in
                     let cell = tableView.dequeueCellForIndexPath(indexPath) as MainTableCell
                     cell.render(repo: item)
                     return cell
                 })
+                .store(in: &subscriptions)
         }
     }
 
@@ -36,15 +37,31 @@ class MainViewController: UIViewController {
         return controller
     }()
 
-    @Published var people = [Person(name: "Kim"), Person(name: "Charles")]
-    var cancellable: AnyCancellable?
+    private lazy var indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.frame = CGRect(x: 0, y: 0, width: 64, height: 64)
+        indicator.center = self.view.center
+        indicator.hidesWhenStopped = true
+        indicator.color = UIColor.systemMint
+        indicator.isHidden = true
+        return indicator
+    }()
 
+    private var subscriptions = Set<AnyCancellable>()
     private let viewModel: MainViewModelable = MainViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        view.addSubview(indicator)
+
+        viewModel.isLoadingSubject
+            .sink {
+                $0 ? self.indicator.startAnimating() : self.indicator.stopAnimating()
+                self.indicator.isHidden = !$0
+            }
+            .store(in: &subscriptions)
     }
 }
 

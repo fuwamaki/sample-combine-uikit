@@ -10,7 +10,7 @@ import UIKit
 extension UITableViewCell {
 
     static var defaultHeight: CGFloat {
-        return 44.0
+        return 48.0
     }
 
     class var defaultReuseIdentifier: String {

@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import SafariServices
 
 class MainViewController: UIViewController {
 
@@ -60,6 +61,13 @@ class MainViewController: UIViewController {
             }
             .store(in: &subscriptions)
 
+        viewModel.showWebViewSubject
+            .sink { [weak self] in
+                let viewController = SFSafariViewController(url: $0)
+                self?.present(viewController, animated: true)
+            }
+            .store(in: &subscriptions)
+
         viewModel.errorAlertSubject
             .sink { [weak self] message in
                 let alert = UIAlertController(
@@ -77,6 +85,11 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return MainTableCell.defaultHeight
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.handleDidSelectRowAt(indexPath)
     }
 }
 

@@ -9,15 +9,18 @@ import Foundation
 import Combine
 
 protocol MainViewModelable {
-    var listSubject: PassthroughSubject<[GithubRepo], Never> { get }
+    var listSubject: CurrentValueSubject<[GithubRepo], Never> { get }
     var isLoadingSubject: PassthroughSubject<Bool, Never> { get }
+    var showWebViewSubject: PassthroughSubject<URL, Never> { get }
     var errorAlertSubject: PassthroughSubject<String, Never> { get }
     func fetch(query: String?) async
+    func handleDidSelectRowAt(_ indexPath: IndexPath)
 }
 
 final class MainViewModel {
-    var listSubject = PassthroughSubject<[GithubRepo], Never>()
+    var listSubject = CurrentValueSubject<[GithubRepo], Never>([])
     var isLoadingSubject = PassthroughSubject<Bool, Never>()
+    var showWebViewSubject = PassthroughSubject<URL, Never>()
     var errorAlertSubject = PassthroughSubject<String, Never>()
 
     private let apiClient: APIClientable
@@ -57,5 +60,11 @@ extension MainViewModel: MainViewModelable {
             guard let error = error as? APIError else { return }
             await self.showErrorAlert(error.message)
         }
+    }
+
+    func handleDidSelectRowAt(_ indexPath: IndexPath) {
+        let item = listSubject.value[indexPath.row]
+        guard let url = URL(string: item.htmlUrl) else { return }
+        showWebViewSubject.send(url)
     }
 }

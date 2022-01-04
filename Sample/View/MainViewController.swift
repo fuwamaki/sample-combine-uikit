@@ -55,7 +55,9 @@ class MainViewController: UIViewController {
 
         viewModel.isLoadingSubject
             .sink { [weak self] in
-                $0 ? self?.indicator.startAnimating() : self?.indicator.stopAnimating()
+                $0
+                ? self?.indicator.startAnimating()
+                : self?.indicator.stopAnimating()
                 self?.indicator.isHidden = !$0
             }
             .store(in: &subscriptions)

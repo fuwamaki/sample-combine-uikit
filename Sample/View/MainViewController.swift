@@ -70,6 +70,7 @@ class MainViewController: UIViewController {
             .store(in: &subscriptions)
 
         viewModel.errorAlertSubject
+            .filter { !$0.isEmpty }
             .sink { [weak self] message in
                 let alert = UIAlertController(
                     title: "エラー",
